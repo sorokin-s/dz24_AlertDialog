@@ -51,7 +51,7 @@ public class ListAdapter extends  RecyclerView.Adapter<ListAdapter.ViewHolder> {
         items.remove(position);
         notifyDataSetChanged();
     }
-    public void deleteItemsByItem(ArrayList<Item> itemsForDel){  // удаляем по элементу
+    public void deleteItemsByItem(ArrayList<Item> itemsForDel){  //// удаляем по модели элемента-
         items.removeAll(itemsForDel);
         notifyDataSetChanged();
     }

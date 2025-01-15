@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences(PREFS_NAME,MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean(KEY_FIRST_LAUNCH,false);
-        editor.apply();
+        editor.apply(); ////
     }
 
     public void createDialog(){              // диалог удаления элементов списка

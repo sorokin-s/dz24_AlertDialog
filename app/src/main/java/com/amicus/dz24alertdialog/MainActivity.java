@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar); // активируем toolbar
         fillItemsProducts();
         recyclerView= findViewById(R.id.shopping_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -45,11 +46,11 @@ public class MainActivity extends AppCompatActivity {
         listAdapter = new ListAdapter(itemsProducts,itemClickListener);
         recyclerView.setAdapter(listAdapter);
         toolbar.setTitle("Записей: "+itemsProducts.size());
-        if(isFirstLaunch()){
-            createDialog();
-        }
+//        if(isFirstLaunch()){
+//            createDialog();
+//        }
 
-        setSupportActionBar(toolbar); // активируем toolbar
+
     }
     List<View>listView = new ArrayList<>();  // вспомогательный список
     void itemSelected(Item item, int position,View itemView){  // устанавливаем флаг выбора в элементе и меняем цвет фона
@@ -77,13 +78,15 @@ public class MainActivity extends AppCompatActivity {
         itemsProducts.add(new Item(R.drawable.produkty,"Бекон","1шт"));
         itemsProducts.add(new Item(R.drawable.produkty,"Творог","2шт"));
         itemsProducts.add(new Item(R.drawable.produkty,"Пиво","6шт"));
-        itemsProducts.add(new Item(R.drawable.produkty,"Вода","2шт"));}
+        itemsProducts.add(new Item(R.drawable.produkty,"Вода","2шт"));
+
+    }
     ////////////toolBar//////////////////////////////////
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.add_menu,menu);
-        getMenuInflater().inflate(R.menu.main_menu,menu);
         getMenuInflater().inflate(R.menu.delete_menu,menu);
+        getMenuInflater().inflate(R.menu.main_menu,menu);
         return true;
     }
 
@@ -134,7 +137,6 @@ public class MainActivity extends AppCompatActivity {
                         .filter(Item::isChoice)
                         .collect(Collectors
                                 .toCollection(ArrayList::new));
-                // listAdapter.deleteItemByModel(collect);
                 itemsProducts.removeAll(collect);  // удаляем элементы
                 listAdapter.notifyDataSetChanged();
                 toolbar.setTitle(itemsProducts.size()+" Записей");

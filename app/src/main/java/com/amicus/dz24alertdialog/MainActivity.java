@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
                         .filter(Item::isChoice)
                         .collect(Collectors
                                 .toCollection(ArrayList::new));
-                listAdapter.deleteItemByModel(collect);
+                listAdapter.deleteItemsByItem(collect);
                 toolbar.setTitle(itemsProducts.size()+" Записей");
                 listView.forEach(v->{v.setBackgroundColor(500003);}); //крайне корявый способ т.к. не нашёл как получить по другому доступ к вьюжкам:(
             }

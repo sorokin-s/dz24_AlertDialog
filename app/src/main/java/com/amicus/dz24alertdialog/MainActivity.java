@@ -134,7 +134,9 @@ public class MainActivity extends AppCompatActivity {
                         .filter(Item::isChoice)
                         .collect(Collectors
                                 .toCollection(ArrayList::new));
-                listAdapter.deleteItemByModel(collect);
+                // listAdapter.deleteItemByModel(collect);
+                itemsProducts.removeAll(collect);
+                listAdapter.notifyDataSetChanged();
                 toolbar.setTitle(itemsProducts.size()+" Записей");
                 listView.forEach(v->{v.setBackgroundColor(500003);}); //крайне корявый способ т.к. не нашёл как получить по другому доступ к вьюжкам:(
             }
@@ -156,7 +158,9 @@ public class MainActivity extends AppCompatActivity {
         if(requestCode==100 && resultCode==101 &&data!=null){
             var product = data.getStringExtra("product");
           var quantity =data.getStringExtra("quantity");
-           itemsProducts.add(new Item(R.drawable.produkty,product,quantity));
+             itemsProducts.add(new Item(R.drawable.produkty,product,quantity));
+             listAdapter.notifyDataSetChanged();
+//           listAdapter.addItem(new Item(R.drawable.produkty,product,quantity));
             toolbar.setTitle("Записей: "+itemsProducts.size());
 
         }

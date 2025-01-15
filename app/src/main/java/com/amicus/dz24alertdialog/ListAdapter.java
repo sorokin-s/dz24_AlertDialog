@@ -47,18 +47,7 @@ public class ListAdapter extends  RecyclerView.Adapter<ListAdapter.ViewHolder> {
     public int getItemCount() {
         return items.size();
     }
-//    public void deleteItemByPosition(int position){ // удаляем по позиции
-//        items.remove(position);
-//        notifyDataSetChanged();
-//    }
-//    public void deleteItemByModel(ArrayList<Item> itemsForDel){  //// удаляем по модели элемента-
-//        items.removeAll(itemsForDel);
-//        notifyDataSetChanged();
-//    }
-    public void addItem(Item item){   // добавляем элемент
-        items.add(item);
-        notifyDataSetChanged();
-    }
+
     public  class ViewHolder extends RecyclerView.ViewHolder
     {
         TextView textView1,textView2;
